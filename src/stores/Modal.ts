@@ -2,11 +2,16 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 
 export const modal = defineStore("modal",()=>{
-  const status = ref(false);
+  const todoStatus = ref(false);
+  const delStatus = ref(false);
 
-  const toggle = ()=>{
-    status.value = !status.value;
+  const todoToggle = ()=>{
+    todoStatus.value = !todoStatus.value;
   }
 
-  return {status, toggle}
+  const delToggle = ()=>{
+    delStatus.value = !delStatus.value;
+  }
+
+  return {todoStatus, delStatus, todoToggle, delToggle}
 })

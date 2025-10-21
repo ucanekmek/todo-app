@@ -1,9 +1,11 @@
 import type { userAddTodo } from "@/interface/faces";
 import { defineStore } from "pinia";
 import { onMounted, ref } from "vue";
+import { modal } from "./Modal";
 
 export const addTodo = defineStore("addTodo", ()=>{
   const storage = ref<userAddTodo[]>([]);
+  const modals = modal();
 
   onMounted(()=>{
     storage.value = JSON.parse(localStorage.getItem("Todo") || "[]");
@@ -22,5 +24,11 @@ export const addTodo = defineStore("addTodo", ()=>{
     localStorage.setItem("Todo", JSON.stringify(storage.value));
   }
 
-  return {storage , add}
+  const deleteAll = () =>{
+    localStorage.removeItem("Todo");
+    storage.value = JSON.parse(localStorage.getItem("Todo") || "[]");
+    modals.delToggle();
+  }
+
+  return {storage , add, deleteAll}
 })

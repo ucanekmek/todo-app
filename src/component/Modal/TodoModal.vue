@@ -10,7 +10,7 @@ const todo = addTodo();
 const date = new Date();
 
 const save = () =>{
-  todo.add(text.value,`${date.getHours()}:${date.getMinutes()} ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`);
+  todo.add(text.value,`${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,"0")} ${String(date.getDate()).padStart(2,"0")}.${String(date.getMonth() + 1).padStart(2,'0')}.${date.getFullYear()}`);
 
   modals.todoToggle();
   text.value = "";

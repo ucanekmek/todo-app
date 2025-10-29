@@ -5,8 +5,8 @@
     <AllDeleteModals/>
 
     <div class="w-full h-[80vh]  text-4xl flex justify-center items-center text-white flex-col" v-if="local.storage.length === 0" >
-      <DotLottieVue class="w-80 h-80 sm:w-120 sm:h-120 lg:w-140 lg:h-140" autoplay loop src="https://lottie.host/4c44f647-ee16-4615-883e-ad3c2fccc24d/6wl6KptIHJ.lottie" />
-      <h1 class="text-2xl font-semibold" >Burası Boş Galiba</h1>
+      <DotLottieVue class="w-70 h-70 sm:w-100 sm:h-100 lg:w-120 lg:h-120" autoplay loop src="https://lottie.host/2edb537a-0017-406b-8fa7-4afdd0acf74b/RyMzJXfOBn.lottie" />
+      <h1 class="text-2xl font-semibold select-none" >Burası Boş Galiba</h1>
     </div>
 
     <div class="m-2 p-3 bg-[rgb(20,20,20)] rounded-2xl flex flex-col gap-1.5" v-for="db in local.storage" :key="db.id" v-else >

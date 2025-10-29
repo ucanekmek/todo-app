@@ -1,9 +1,9 @@
 <template>
-<UiModal title="Tüm Todoları Sil" @close="modals.delToggle" v-show="modals.delStatus" >
+<UiModal title="Tüm Todoları Sil" @close="modals.allDelToggle" v-show="modals.allDelStatus" >
       <h1 class="p-2" >Tüm Todolar Silinmek Üzere Bundan Eminmisiniz? Unutma Bu İşlemin Bir Daha Geri Dönüşü Yok.</h1>
       <div class="flex gap-2 justify-end" >
         <UiButton variant="delete" @click="local.deleteAll" >Hepsini Sil</UiButton>
-        <UiButton variant="normal" @click="modals.delToggle" >İptal</UiButton>
+        <UiButton variant="normal" @click="modals.allDelToggle" >İptal</UiButton>
       </div>
     </UiModal>
 </template>

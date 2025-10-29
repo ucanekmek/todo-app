@@ -5,7 +5,8 @@ import type { userAddTodo } from "@/interface/todoFace";
 
 export const localDB = defineStore("localDB", ()=>{
   const storage = ref<userAddTodo[]>([]);
-  const modals = modal()
+  const delID = ref<number>();
+  const modals = modal();
 
   onMounted(()=>{
     storage.value = JSON.parse(localStorage.getItem("Todo") || "[]");
@@ -29,8 +30,18 @@ export const localDB = defineStore("localDB", ()=>{
   const deleteAll = () =>{
     localStorage.removeItem("Todo");
     storage.value = JSON.parse(localStorage.getItem("Todo") || "[]");
-    modals.delToggle();
+    modals.allDelToggle();
   }
 
-  return {storage, add, deleteAll}
+  const delTodo = ()=>{
+    storage.value = storage.value.filter(data => data.id !== delID.value);
+    localStorage.setItem("Todo", JSON.stringify(storage.value));
+    modals.turnOffDelToggle();
+  }
+
+  const getID = (id:number)=>{
+    delID.value = id;
+  }
+
+  return {storage, add, deleteAll, delTodo, getID}
 })

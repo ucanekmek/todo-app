@@ -1,13 +1,25 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import { localDB } from "./localDB";
 
 export const modal = defineStore("modal", ()=>{
   const status = ref(false);
   const delStatus = ref(false);
+  const allDelStatus = ref(false);
+  const local = localDB();
 
   const toggle = () => status.value = !status.value;
 
-  const delToggle = () => delStatus.value = !delStatus.value
+  const turnOnDelToggle = (id:number)=> {
+    local.getID(id);
+    delStatus.value = true;
+  }
 
-  return { status, delStatus, toggle, delToggle }
+  const turnOffDelToggle = ()=>{
+    delStatus.value = false;
+  }
+
+  const allDelToggle = () => allDelStatus.value = !allDelStatus.value
+
+  return { status, delStatus, allDelStatus, toggle, turnOnDelToggle, turnOffDelToggle, allDelToggle }
 })

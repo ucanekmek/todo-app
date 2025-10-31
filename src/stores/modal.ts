@@ -6,6 +6,7 @@ export const modal = defineStore("modal", ()=>{
   const status = ref(false);
   const delStatus = ref(false);
   const allDelStatus = ref(false);
+  const editStatus = ref(false);
   const local = localDB();
 
   const toggle = () => status.value = !status.value;
@@ -21,5 +22,12 @@ export const modal = defineStore("modal", ()=>{
 
   const allDelToggle = () => allDelStatus.value = !allDelStatus.value
 
-  return { status, delStatus, allDelStatus, toggle, turnOnDelToggle, turnOffDelToggle, allDelToggle }
+  const editToggle = (id?: number) => {
+    local.textEditID(id);
+    editStatus.value = !editStatus.value
+  }
+
+
+
+  return { status, delStatus, allDelStatus, editStatus, toggle, turnOnDelToggle, turnOffDelToggle, allDelToggle, editToggle }
 })
